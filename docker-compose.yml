@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  wordpress:
+    build:
+      context: ./wordpress
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: anand_bapodara
+      WORDPRESS_DB_PASSWORD: devopsproject
+      WORDPRESS_DB_NAME: devops_project
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: devopsproject
+      MYSQL_DATABASE: devops_project
+
